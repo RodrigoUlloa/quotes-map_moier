@@ -4,12 +4,41 @@
 <script >
   let map;
   function initMap() {
-    map = new google.maps.Map( document.getElementById('map'),{
-      center: {
-        lat: 0,
-        lng: 0
-      },
-      zoom: 14
+    const larara = { lat: 0, lng: 0 };
+    const map = new google.maps.Map( document.getElementById('map'),{
+      center: larara ,
+      zoom: 5
     });
-  }
+
+  const contentString = '<h2> datos del viento </h2>'
+  const infoWindow = new google.maps.InfoWindow({
+    content: contentString,
+  });
+  const marker = new google.maps.Marker({
+    position: larara,
+    map,
+    title: "titulo"
+  });
+  marker.addListener("click", () => {
+    infoWindow.open(map, marker);
+  });
+}
+
+  // let infoWindow = new google.maps.InfoWindow({
+  //   content: '<h2>London weaite </h2>'
+  // })
+  // marker.addListener('click', function(){
+  //   infoWindow.open(map, marker);
+  // })
+
+  // let infoWindowLatLang;
+  // map.addListener( 'click', funciton( mapsMouseEvent ){
+  //   if ( infoWindowLatLang ) infoWindowLatLang.close();
+  //
+  //   infoWindowLatLang =  new google.maps.InfoWindow({
+  //     position: mapsMouseEvent.latLng
+  //   });
+  //   infoWindowLatLang.setContent( mapsMouseEvent.latLng.toString() );
+  //   infoWindowLatLang.open(map);
+  // });
 </script>
